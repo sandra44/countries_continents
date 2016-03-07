@@ -17,14 +17,15 @@ f4.close()
 unknown = "unknown"
 info = {}
 final_info = {}
-#count = 0
+count = 0
 f3 = open("organised.json","w")
 j=0
 auth_name = ""
 
 def isCity(given_city):
-        if given_city in j2:
-                return True
+	for c in j2:
+        	if given_city in c:
+                	return True
         else:
                 return False
 
@@ -32,11 +33,12 @@ def isCountry(aff_list):
 	#j=0
 	flag = False
 	for s in aff_list:
-		if any(i in s for i in['|C|','|c|']):#if '|c|' in s:
+		if '|c|' in s: #if any(i in s for i in['|C|','|c|'])
 			flag = True
 			global j 
 			j = aff_list.index(s)
-			return s.strip('|c|').strip('|C|')
+			#return s.strip('|c|').strip('|C|')
+			return s.strip('|c|')
 
 	if flag == False:
 		return unknown		 
@@ -115,12 +117,12 @@ for every in author:
         info={"dept" : dept, "institute/university" : inst, "city" : city, "state" : state, "country" : country}
         final_info[name]= info
 	#print info,"\n\n\n"
-        #count = count + 1
-        #if count >= 3:
-        #        break
+        count = count + 1
+        if count >= 7:
+                break
 
-f3.write(json.dumps(final_info))
+#f3.write(json.dumps(final_info))
 
-#print json.dumps(final_info)
+print "\n\n" + json.dumps(final_info) + "\n\n"
 
 f3.close()

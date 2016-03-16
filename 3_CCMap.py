@@ -11,11 +11,15 @@ j_obj = json.loads(response.text)
 data = {}
 
 for country in j_obj:
+	conti = str(country['region'])
 
-	if country['region'] not in data.keys():
-		data[country['region']] = {}
+	if conti == "":
+		conti == "unknown"
 
-	data[country['region']][country['name']]=[]
+	if conti not in data.keys():
+		data[conti] = {}
+
+	data[conti][str(country['name'])]=[]
 		
 	#count = count + 1
 	#if count > 10:

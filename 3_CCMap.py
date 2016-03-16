@@ -21,9 +21,9 @@ for country in j_obj:
 	#if count > 10:
 	#	break
 
-print (data)
+#print (data)
 
-f1 = open('final.json', 'w')
+f1 = open('Conti_country_mapping.json', 'w')
 f1.write(json.dumps(data))
 f1.close()
 

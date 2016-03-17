@@ -9,8 +9,6 @@ for country in t:
     country_codes.append(country.alpha2)
     country_name.append(country.name)
 
-for i in country_codes:
-        get_list(i)
 
 
 
@@ -18,6 +16,7 @@ city_list = []
 def get_list(code):
     from bs4 import BeautifulSoup
     import urllib, sys
+    i = 0
     while i<=5000:
         url = "http://www.geonames.org/search.html?q=&country=" + code + "&startRow=" + str(i)
         i += 50
@@ -30,3 +29,8 @@ def get_list(code):
             links = city.find_all('td')[1]
             name = links.find_all('a')[0]
             city_list.append(name.get_text())
+            
+            
+            
+for i in country_codes:
+        get_list(i)

@@ -22,7 +22,7 @@ city1 = {}
 for code,name1 in zip(country_codes,country_name):   
     i = 0
     city1[name1] = []
-    while i <= 50:
+    while i <= 500:
         url = "http://www.geonames.org/search.html?q=&country=" + code + "&startRow=" + str(i)
         i += 50
         hdr = {'User-Agent' : 'Chrome/6.0'}

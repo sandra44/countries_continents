@@ -22,16 +22,17 @@ city1 = {}
 for code,name1 in zip(country_codes,country_name):   
     i = 0
     city1[name1] = []
-    while i <= 500:
+    while i <= 100:
         url = "http://www.geonames.org/search.html?q=&country=" + code + "&startRow=" + str(i)
         i += 50
         hdr = {'User-Agent' : 'Chrome/6.0'}
         req = urllib.request.Request(url, headers = hdr)
         page = urllib.request.urlopen(req)
         soup = BeautifulSoup(page, 'html.parser')
-        cities = soup.find('table', {'class':'restable'}).find_all('tr')
-        for city in cities[2:len(cities)-1:]:
-            links = city.find_all('td')[1]
-            name2 = links.find_all('a')[0]
-            city1[name1].append(name2.get_text())
-ß
+        table = soup.find('table', {'class':'restable'})
+        if table is not None:
+            cities = table.find_all('tr')
+            for city in cities[2:len(cities)-1:]:
+                links = city.find_all('td')[1]
+                name2 = links.find_all('a')[0]
+                city1[name1].append(name2.get_text())

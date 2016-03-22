@@ -4,7 +4,7 @@ url = 'https://restcountries.eu/rest/v1/all'
 response = requests.get(url)
 output = {}
 
-f = open("author_final.json","r")
+f = open("cities_list.json","r")
 j = json.loads(f.read())
 
 for items in json.loads(response.text):
